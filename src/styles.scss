@@ -1,1 +1,28 @@
-/* You can add global styles to this file, and also import other style files */
+@use "@angular/material" as mat;
+
+$materialtest-app-typography: mat.define-typography-config();
+$materialtest-app-primary: mat.define-palette(mat.$cyan-palette, 700);
+$materialtest-app-accent: mat.define-palette(mat.$cyan-palette, 200, A100, A700);
+$materialtest-light-app-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: $materialtest-app-primary,
+            accent: $materialtest-app-accent,
+        ),
+        typography: $materialtest-app-typography,
+        density: 0,
+    )
+);
+@include mat.all-component-themes($materialtest-light-app-theme);
+
+html,
+body,
+app-root,
+mat-drawer-container,
+mat-sidenav-container {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; //font-size: 14px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
